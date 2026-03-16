@@ -655,7 +655,7 @@ class context::backend {
 public:
 	backend() throw(error_t) {
 		libusb_set_option(NULL, LIBUSB_OPTION_WEAK_AUTHORITY);
-		libusb_set_option(NULL, LIBUSB_OPTION_NO_DEVICE_DISCOVERY);
+		libusb_set_option(NULL, LIBUSB_OPTION_NO_DEVICE_DISCOVERY, NULL);
 
 		if( int err = libusb_init(&ctx) ) {
 			log.e(__,"libusb_error %d : %s", err, libusb_error_name(err));

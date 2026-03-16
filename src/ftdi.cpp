@@ -178,7 +178,12 @@ driver* ftdi::factory::create(libusb_device_handle* handle, uint8_t num) const t
 	libusb_get_device_descriptor(dev, &desc);
 
 	/* limit to FTDI VID 													*/
-	if( desc.idVendor != 0x0403 ) return nullptr;
+	if( desc.idVendor != 0x0403 && !(desc.idVendor == 0x2341 && (
+        desc.idProduct == 0x0043 ||  // Uno R3
+        desc.idProduct == 0x0001 ||  // Uno R3 older
+        desc.idProduct == 0x0010 ||  // Mega 2560
+        desc.idProduct == 0x0042     // Mega 2560 R3
+    )) ) return nullptr;
 
 	bool found = false;
 	for(auto&& i : table) {
