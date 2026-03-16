@@ -22,6 +22,9 @@
 #endif
 
 #define CONTROL_SOCK "/data/data/com.termux/files/home/.ptyserial.sock"
+#ifndef CRTSCTS
+#define CRTSCTS 0x80000000
+#endif
 
 int setup_control_socket() {
     int sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
