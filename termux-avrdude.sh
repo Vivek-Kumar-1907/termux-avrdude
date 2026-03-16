@@ -2,7 +2,7 @@
 # termux-avrdude
 set -e
 
-PTYSERIAL="./bin/ptyserial"
+PTYSERIAL="~/termux-avrdude/bin/ptyserial"
 PORT_FILE="$HOME/pty_port.txt"
 READY_FILE="$HOME/bridge_ready.txt"
 SOCK="$HOME/.ptyserial.sock"
